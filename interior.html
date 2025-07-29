@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro-Level CSS Scroll Snap Carousel</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="interior.css" />
+</head>
+<body>
+    <div class="navbar">
+  <div class="animated-text">
+    <div class="line">ABI D CRUZ</div>
+    <div class="line">Photographer</div>
+    <div class="line">Designer</div>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="image.html">Gallery</a>
+
+    <!-- Dropdown-New (clickable) -->
+    <div class="dropdown-new" id="photographyDropdown">
+      <button class="dropbtn-new" id="photographyButton">
+        Genres
+        <span class="arrow-new"></span>
+      </button>
+      <div class="dropdown-content-new">
+        <a href="culinary.html">Culinary</a>
+        <a href="model.html">Model</a>
+        <a href="interiors.html">Interior</a>
+        <!-- add more submenu items here -->
+      </div>
+    </div>
+
+    <button class="btn" onclick="location.href='#contact'">
+      CONTACT
+    </button>  
+</nav>
+</div>
+  <div class="gallery-container">
+
+
+    <div>
+      <p class="gallery-title">Interior Photography</p>
+      <h1 class="gallery-subtitle" style="padding: 3rem 0;">Interior photography is more than capturing rooms—it’s about revealing atmosphere, style, and purpose in every space. With careful use of light, composition, and perspective, it transforms walls, textures, and décor into a visual experience that speaks of design and comfort. Each image tells the story of a space—how it feels to be there, how light flows through it, and how every detail contributes to its character. Whether it’s a cozy home, a modern office, or a luxurious lounge, interior photography brings architecture to life and invites viewers into curated moments of elegance and functionality.</h1>
+    </div>
+    
+    <section class="gallery masonry">
+
+    <div class="item">
+        <img src="/images/76.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/77.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/78.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/79.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/80.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/81.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/82.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/83.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/84.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/85.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/86.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/87.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/88.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/89.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/90.jpeg" alt="Wedding ceremony">
+    </div>      <div class="item">
+        <img src="/images/93.jpeg" alt="Wedding ceremony">
+    </div>    
+    </section>
+  </div>
+
+<script>
+    window.addEventListener('load', () => {
+      const grid      = document.querySelector('.gallery.masonry');
+      const style     = getComputedStyle(grid);
+      const rowHeight = parseInt(style.getPropertyValue('grid-auto-rows'));
+      const rowGap    = parseInt(style.getPropertyValue('gap'));
+
+      grid.querySelectorAll('.item').forEach(item => {
+        const img = item.querySelector('img');
+        const span = Math.ceil(
+          (img.getBoundingClientRect().height + rowGap) /
+          (rowHeight + rowGap)
+        );
+        item.style.gridRowEnd = 'span ' + span;
+      });
+    });
+  </script>
+  
+<script>
+  // Wait until the DOM is fully loaded:
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.getElementById('photographyDropdown');
+    const button = document.getElementById('photographyButton');
+
+    // 1. Toggle .open when you click the button
+    button.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent this click from bubbling up and immediately closing
+      dropdown.classList.toggle('open');
+    });
+
+    // 2. If you click anywhere outside the dropdown, close it
+    document.addEventListener('click', function(e) {
+      // If the click target is not inside dropdown, remove the 'open' class
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro-Level CSS Scroll Snap Carousel</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="culinary.css" />
+</head>
+<body>
+    <div class="navbar">
+  <div class="animated-text">
+    <div class="line">ABI D CRUZ</div>
+    <div class="line">Photographer</div>
+    <div class="line">Designer</div>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="image.html">Gallery</a>
+
+    <!-- Dropdown-New (clickable) -->
+    <div class="dropdown-new" id="photographyDropdown">
+      <button class="dropbtn-new" id="photographyButton">
+        Genres
+        <span class="arrow-new"></span>
+      </button>
+      <div class="dropdown-content-new">
+        <a href="culinary.html">Culinary</a>
+        <a href="model.html">Model</a>
+        <a href="interior.html">Interior</a>
+        <!-- add more submenu items here -->
+      </div>
+    </div>
+
+    <button class="btn" onclick="location.href='#contact'">
+      CONTACT
+    </button>  
+</nav>
+</div>
+  <div class="gallery-container">
+    <div>
+      <p class="gallery-title">Culinary Photography</p>
+      <h1 class="gallery-subtitle" style="padding: 3rem 0;">Culinary photography is more than capturing food—it’s about telling a story of flavor, culture, and creativity. Each dish becomes a work of art, and through the lens, we freeze its essence in time. From the delicate textures of fresh ingredients to the rich colors of a plated masterpiece, culinary photography invites viewers to taste with their eyes. It celebrates the passion behind the preparation, the beauty of presentation, and the fleeting magic of a perfectly crafted meal. Whether it’s steam rising from a hot bowl or the glisten of sauce under soft lighting, every image brings food to life in a way that lingers long after the last bite.</h1>
+    </div>
+    <section class="gallery masonry">
+    <div class="item">
+        <img src="/images/91.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/92.jpeg" alt="Wedding ceremony">
+    </div>     <div class="item">
+        <img src="/images/94.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/95.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/96.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/97.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/98.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/99.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/100.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/101.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/102.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/103.jpeg" alt="Wedding ceremony">
+    </div>    <div class="item">
+        <img src="/images/104.jpeg" alt="Wedding ceremony">
+    </div>
+    </section>
+  </div>
+
+<script>
+    window.addEventListener('load', () => {
+      const grid      = document.querySelector('.gallery.masonry');
+      const style     = getComputedStyle(grid);
+      const rowHeight = parseInt(style.getPropertyValue('grid-auto-rows'));
+      const rowGap    = parseInt(style.getPropertyValue('gap'));
+
+      grid.querySelectorAll('.item').forEach(item => {
+        const img = item.querySelector('img');
+        const span = Math.ceil(
+          (img.getBoundingClientRect().height + rowGap) /
+          (rowHeight + rowGap)
+        );
+        item.style.gridRowEnd = 'span ' + span;
+      });
+    });
+  </script>
+  
+<script>
+  // Wait until the DOM is fully loaded:
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.getElementById('photographyDropdown');
+    const button = document.getElementById('photographyButton');
+
+    // 1. Toggle .open when you click the button
+    button.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent this click from bubbling up and immediately closing
+      dropdown.classList.toggle('open');
+    });
+
+    // 2. If you click anywhere outside the dropdown, close it
+    document.addEventListener('click', function(e) {
+      // If the click target is not inside dropdown, remove the 'open' class
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>

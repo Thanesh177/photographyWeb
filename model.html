@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro-Level CSS Scroll Snap Carousel</title>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="model.css" />
+</head>
+<body>
+    <div class="navbar">
+  <div class="animated-text">
+    <div class="line">ABI D CRUZ</div>
+    <div class="line">Photographer</div>
+    <div class="line">Designer</div>
+  </div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="image.html">Gallery</a>
+
+    <!-- Dropdown-New (clickable) -->
+    <div class="dropdown-new" id="photographyDropdown">
+      <button class="dropbtn-new" id="photographyButton">
+        Genres
+        <span class="arrow-new"></span>
+      </button>
+      <div class="dropdown-content-new">
+        <a href="culinary.html">Culinary</a>
+        <a href="model.html">Model</a>
+        <a href="interior.html">Interior</a>
+        <!-- add more submenu items here -->
+      </div>
+    </div>
+
+    <button class="btn" onclick="location.href='#contact'">
+      CONTACT
+    </button>  
+</nav>
+</div>
+  <div class="gallery-container">
+
+    <div>
+      <p class="gallery-title">Model Photography</p>
+      <h1 class="gallery-subtitle" style="padding: 3rem 0;">Model photography is the art of capturing emotion, attitude, and elegance through the human form. It’s where confidence meets creativity, and every pose becomes a statement. Beyond beauty, it’s about storytelling—expressing identity, fashion, and energy in a single frame. Whether it’s bold editorial lighting or natural candid moments, model photography brings style and personality to life. Each image reflects the connection between the subject and the lens, turning fleeting expressions into timeless works of visual art.</h1>
+    </div>
+
+    <section class="gallery masonry">
+    <div class="item">
+        <img src="images/model1.png" alt="Wedding ceremony">
+    </div>
+    <div class="item">
+        <img src="images/model2.png" alt="Bride from behind">
+    </div>
+
+    <div class="item">
+        <img src="images/model3.png" alt="The Wed portrait">
+    </div>
+    <div class="item">
+        <img src="images/ss.png" alt="Group shot">
+    </div>
+    <div class="item">
+        <img src="images/n.png" alt="Vogue cover">
+    </div>
+    <div class="item">
+        <img src="images/uu.png" alt="Wedding ceremony">
+    </div>
+    <div class="item">
+        <img src="images/model4.png" alt="Bride from behind">
+    </div>
+
+    <div class="item">
+        <img src="123.jpeg" alt="The Wed portrait">
+    </div>
+    </section>
+  </div>
+
+<script>
+    window.addEventListener('load', () => {
+      const grid      = document.querySelector('.gallery.masonry');
+      const style     = getComputedStyle(grid);
+      const rowHeight = parseInt(style.getPropertyValue('grid-auto-rows'));
+      const rowGap    = parseInt(style.getPropertyValue('gap'));
+
+      grid.querySelectorAll('.item').forEach(item => {
+        const img = item.querySelector('img');
+        const span = Math.ceil(
+          (img.getBoundingClientRect().height + rowGap) /
+          (rowHeight + rowGap)
+        );
+        item.style.gridRowEnd = 'span ' + span;
+      });
+    });
+  </script>
+  
+<script>
+  // Wait until the DOM is fully loaded:
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdown = document.getElementById('photographyDropdown');
+    const button = document.getElementById('photographyButton');
+
+    // 1. Toggle .open when you click the button
+    button.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent this click from bubbling up and immediately closing
+      dropdown.classList.toggle('open');
+    });
+
+    // 2. If you click anywhere outside the dropdown, close it
+    document.addEventListener('click', function(e) {
+      // If the click target is not inside dropdown, remove the 'open' class
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+      }
+    });
+  });
+</script>
+</body>
+</html>
