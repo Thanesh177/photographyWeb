@@ -1384,23 +1384,23 @@ h1 {
   position: absolute;
   display: flex;
   flex-direction: column;
+  text-align: center;
    gap: 10px;
-   padding: 0 20px;
-font-family: 'Lucida Handwriting', cursive;
+   padding: 0 10px;
+   padding-bottom: 140px;
+  font-family: 'Lucida Handwriting', cursive;
 }
 
 .down1 {
   font-family: 'Lucida Handwriting';
-    position: absolute;
     display: flex;
-    flex-direction: column;
-  font-size: 1.2rem;
-  gap: 10px;
+    line-height: 1.3rem;
+  font-size: 1rem;
   z-index: 2;
-  justify-content: justify;
-  text-align: center;
-  align-items: center;
+  text-align: justify;
+  width: 260px;
   transform: translateX(-50%);
+  padding-top: 190px;
 }
 
 .down {
@@ -1421,9 +1421,9 @@ font-family: 'Lucida Handwriting', cursive;
   font-weight: bold;
   background-color: transparent;
   width: auto;
-  font-size: 1.3rem;
-  line-height: 1.2;
-  border: 0 solid white;       /* start with no border */
+  font-size: 1.2rem;
+  line-height: 1;
+  border: 0.5px solid white;       /* start with no border */
   /* 1) Slide‐in then 2) draw the border */
 }
 
@@ -1487,12 +1487,14 @@ font-family: 'Lucida Handwriting', cursive;
 }
 
 
-#section2 img {
-  display: none;
-  width: 300%;
-  align-items: right;
-  justify-content: center;
+#section2 .about-img {
+  display: block;
+  top: 125%;
+  padding: 1px;
+  width: 65%;
   height: auto;
+  object-fit: cover; /* optional: trims image if needed */
+  border-radius: 8px; /* optional: adds rounded corners */
 }
 
 
