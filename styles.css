@@ -605,7 +605,7 @@ h1 {
   color: #ffffff;                            /* dark gray on white bg */
   text-align: justify;                    
   hyphens: auto;                          /* break long words nicely */
-
+  width: auto;
   /* 3. Measure (line length) */
   max-width: 60ch;                        /* ~60 characters per line */
 
@@ -1382,7 +1382,7 @@ h1 {
 
 .liver {
   position: absolute;
-  display: flex;
+  display: none;
   flex-direction: column;
   text-align: center;
    gap: 10px;
@@ -1395,12 +1395,12 @@ h1 {
   font-family: 'Lucida Handwriting';
     display: flex;
     line-height: 1.3rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   z-index: 2;
   text-align: justify;
   width: 260px;
   transform: translateX(-50%);
-  padding-top: 190px;
+  padding-top: 66px;
 }
 
 .down {
@@ -1489,10 +1489,10 @@ h1 {
 
 #section2 .about-img {
   display: block;
-  top: 125%;
+  top: 113%;
   padding: 1px;
   width: 65%;
-  height: auto;
+  height: 40%;
   object-fit: cover; /* optional: trims image if needed */
   border-radius: 8px; /* optional: adds rounded corners */
 }
@@ -1595,6 +1595,8 @@ h1 {
   
   #section1{
     overflow: hidden;
+    height: 100vh;
+    width: 100vw;
   }
 
   /*----------------------------------------------------------------
@@ -1618,11 +1620,10 @@ h1 {
 .services-title-wrapper {
   position: relative;
   display: flex;
-  align-items: center;
-  padding: 30px 90px;
 }
 
 .services-title {
+  width: 100%;
   font-size: 2rem;
   font-weight: bold;
   color: #ffffff;
@@ -1630,7 +1631,10 @@ h1 {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   position: relative;
-  margin: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0;;
 }
 
 /* Decorative line to the left */
@@ -1640,7 +1644,7 @@ h1 {
   flex-shrink: 0;
   position: absolute;
   left: -60px;
-  top: 50%;
+  top: 0%;
   transform: translateY(-50%);
   width: 50px;
   height: 2px;
@@ -1660,8 +1664,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    top: 50%;
-    left: 50%;
+    padding-bottom: 90px;
+
   }
 
   #section3 .cards-container .card {
@@ -1721,7 +1725,7 @@ h1 {
     flex-direction: row;
     padding: 0px 10px;
     width: 100%;
-    height: 100%;           /* let it grow with content */
+    height: 100vh;           /* let it grow with content */
 
   }
 
@@ -1743,12 +1747,12 @@ h1 {
   #nextSection .container {
     flex-direction: column;
     height: 100%;
-    padding-top: 80px;
     overflow: hidden; /* hide overflow for mobile */
   }
 
   /* Text items full width & smaller type */
   .text-item {
+    margin-top: 30px;
     padding: 10px;
     font-size: 0.9rem;
     max-width: 100%;
@@ -1807,6 +1811,7 @@ h1 {
   }
 
   .dot-container .dot {
+    display: none;
     width: 10px;
     height: 10px;
   }
@@ -1817,11 +1822,123 @@ h1 {
   .scroll-indicator {
     display: none;  /* remove side‐dots on smaller screens */
   }
+
+
+
+
+#section5 {
+  overflow: hidden;
+  z-index: 0;
+  height: 90vh;
+}
+
+#slider-section {
+  width: 100%;
+  overflow: hidden;
+  background: #000;
+}
+
+.slider-container {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.track {
+  display: flex;
+  width: calc(200%); /* because we duplicated the images */
+  animation: scrollSlider 600s linear infinite;
+  gap: 30px;
+}
+
+.track img {
+  width: 50vw; /* full screen width */
+  height: 60vh; /* full screen height */
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Animation Keyframes */
+@keyframes scrollSlider {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* Move by half since it's duplicated */
+}
+
+
+
+
+#image-track {
+  display: flex;
+  background-color: #000;
+  flex-direction: row;   /* stack images top→down */
+  gap: 5vmin;
+  position: relative;
+  user-select: none;        /* prevent highlighting during drag */
+  width: 100%;
+  /* give it a fixed height (e.g. full‐viewport height) */
+}
+
+/* Each circular image stays the same size */
+.image {
+  width: 35vmin;
+  height: 25vmin;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(1);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Hover and “active” states remain identical */
+.image:hover {
+  transform: scale(1.1) !important;
+  filter: brightness(1.1) !important;
+}
+
+.image.active {
+  transform: scale(1.2) !important;
+  filter: brightness(1.2) !important;
+}
+
+/* dot container */
+.dot-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 20px 0;
+}
+
+/* each dot */
+.dot-nav .dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
+}
+
+/* active dot */
+.dot-nav .dot.active {
+  background: #ffffff;
+  transform: scale(1.3);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 /* ===== CONTACT SECTION STYLES ===== */
 
 #contact {
   width: 100%;
-  height: 100vh;
+  height: 90vh;
   padding: 00px 15px;
   background-color: #f9f9f9;
 }
@@ -1944,7 +2061,7 @@ h1 {
 
 
 .contents .name{
-    font-size: 40px;
+    font-size: 30px;
     text-transform: uppercase;
     font-weight: bold;
     opacity: 0;
